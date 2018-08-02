@@ -29,12 +29,15 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-   for (var key in list) {
-     if (list[key].value === target) {
-       return true;
-     }
-   }
-   return false;
+    var current = list.head;
+    while (current !== null) {
+      if (current.value === target) {
+        return true;
+      } else {
+        current = current.next;
+      }
+    }
+    return false;
   };
 
   return list;
