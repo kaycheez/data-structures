@@ -46,10 +46,10 @@ BinarySearchTreePrototype.contains = function(value) {
   var findIt = function(value) {
     if (rootNode.value === value) {
       result = true;
-    } else if (rootNode.value > value && rootNode.left !== undefined) {
+    } else if (rootNode.value > value && Object.keys(rootNode.left).length !== 0) {
       rootNode = rootNode.left;
       findIt(value);
-    } else if (rootNode.value < value && rootNode.right !== undefined) {
+    } else if (rootNode.value < value && Object.keys(rootNode.right).length !== 0) {
       rootNode = rootNode.right;
       findIt(value);
     }
@@ -59,7 +59,25 @@ BinarySearchTreePrototype.contains = function(value) {
 };
 
 BinarySearchTreePrototype.depthFirstLog = function(func) {
-  
+  var rootNode = this;
+  console.log(this);
+  var runIt = function(func) {
+    func(rootNode.value);
+    if (Object.keys(rootNode.left).length !== 0) {
+      var temp = rootNode;
+      rootNode = rootNode.left;
+      runIt(func);
+      rootNode = temp;
+    } 
+    if (Object.keys(rootNode.right).length !== 0) {
+      var temp = rootNode;
+      rootNode = rootNode.right;
+      runIt(func);
+      rootNode = temp;
+    }
+  };
+
+  runIt(func);
 };
 
 /*
