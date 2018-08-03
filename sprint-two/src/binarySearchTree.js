@@ -1,8 +1,10 @@
 var BinarySearchTree = function(value) {
   var binarySearchtree = Object.create(BinarySearchTreePrototype);
+
   binarySearchtree.value = value;
   binarySearchtree.left = {};
   binarySearchtree.right = {};
+
   return binarySearchtree;
 };
 
@@ -11,14 +13,7 @@ BinarySearchTreePrototype = {};
 BinarySearchTreePrototype.insert = function(value) {
   var rootNode = this;
   var newNode = BinarySearchTree(value);
-  // var recurse = function(newNode) {
-  //   if (rootNode.value === undefined) {
-  //     rootNode.value = value;
-  //   } else if (value < rootNode.value) {
-  //     rootNode = rootNode.left;
-  //     recurse(rootNode);
-  //   }
-  // };
+
   var recurse = function(newNode) {
     if (rootNode.value > newNode.value) {
       if (Object.keys(rootNode.left).length === 0) {
@@ -36,8 +31,10 @@ BinarySearchTreePrototype.insert = function(value) {
       }
     }
   };
+
   recurse(newNode);
 };
+//time complexity: O(log n)
 
 BinarySearchTreePrototype.contains = function(value) {
   var result = false;
@@ -54,13 +51,16 @@ BinarySearchTreePrototype.contains = function(value) {
       findIt(value);
     }
   };
+
   findIt(value);
+
   return result;
 };
+//time complexity: O(log n)
 
 BinarySearchTreePrototype.depthFirstLog = function(func) {
   var rootNode = this;
-  console.log(this);
+
   var runIt = function(func) {
     func(rootNode.value);
     if (Object.keys(rootNode.left).length !== 0) {
@@ -79,6 +79,7 @@ BinarySearchTreePrototype.depthFirstLog = function(func) {
 
   runIt(func);
 };
+//time complexity: O(n)
 
 /*
  * Complexity: What is the time complexity of the above functions?

@@ -19,16 +19,18 @@ var LimitedArray = function(limit) {
     checkLimit(index);
     return storage[index];
   };
+//time complexity: O(1)
   limitedArray.set = function(index, value) {
     checkLimit(index);
     storage[index] = value;
   };
+//time complexity: O(1)
   limitedArray.each = function(callback) {
     for (var i = 0; i < storage.length; i++) {
       callback(storage[i], i, storage);
     }
   };
-
+//time complexity: O(n)
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
       throw new Error('setter requires a numeric index for its first argument');
@@ -40,6 +42,7 @@ var LimitedArray = function(limit) {
 
   return limitedArray;
 };
+//time complexity: O(1)
 
 // This is a "hashing function". You don't need to worry about it, just use it
 // to turn any string into an integer that is well-distributed between the
@@ -53,6 +56,7 @@ var getIndexBelowMaxForKey = function(str, max) {
   }
   return hash % max;
 };
+//time complexity: O(n)
 
 /*
  * Complexity: What is the time complexity of the above functions?

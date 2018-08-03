@@ -14,9 +14,8 @@ var LinkedList = function() {
     // console.log("this is tail's next: " + list.tail.next);
       list.tail = newNode;
     }
-    
-    
   };
+//time complexity: O(1)
 
   list.removeHead = function() {
     var removed = list.head.value;
@@ -25,8 +24,10 @@ var LinkedList = function() {
     } else {
       list.head = list.head.next;
     }
+
     return removed;
   };
+//time complexity: O(1)
 
   list.contains = function(target) {
     var current = list.head;
@@ -42,6 +43,7 @@ var LinkedList = function() {
 
   return list;
 };
+//time complexity: O(n)
 
 var Node = function(value) {
   var node = {};
