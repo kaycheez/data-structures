@@ -1,9 +1,9 @@
 var Tree = function(value) {
   var newTree = {};
+
   newTree.value = value;
-  _.extend(newTree, treeMethods)
-  // your code here
-  newTree.children = [];  // fix me
+  _.extend(newTree, treeMethods);
+  newTree.children = [];
 
   return newTree;
 };

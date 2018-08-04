@@ -35,8 +35,7 @@ Graph.prototype.removeNode = function(node) {
 Graph.prototype.hasEdge = function(node1, node2) {
   if (this[node1] === undefined || this[node2] === undefined) {
     return false;
-  }
-  else if (this[node1].edge[node2] === node2 && this[node2].edge[node1] === node1) {
+  } else if (this[node1].edge[node2] === node2 && this[node2].edge[node1] === node1) {
     return true;
   } 
   return false;
