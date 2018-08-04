@@ -15,19 +15,22 @@ Graph.prototype.addNode = function(node) {
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
-  for (var key in this) {
-    if (node === +key) {
-      return true;
-    }
-  }
-  return false;
+  return !!(this[node]);
 };
 //time complexity: O(n)
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  delete this[node];
+  var sharedEdge = this[node].edge;
+  // for (var key in sharedEdge) {
+  //   delete this[key].edge[node];
+  // }
+  // delete this[node];
   // delete all shared edges of existing nodes
+  for (var key in sharedEdge) {
+    this.removeEdge(this[key].value, node);
+  }
+  delete this[node];
 };
 //time complexity: O(1)
 
