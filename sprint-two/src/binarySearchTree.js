@@ -4,11 +4,19 @@ var BinarySearchTree = function(value) {
   binarySearchtree.value = value;
   binarySearchtree.left = {};
   binarySearchtree.right = {};
+  binarySearchtree.depthLeft = 0;
+  binarySearchtree.depthRight = 0;
 
   return binarySearchtree;
 };
 
 BinarySearchTreePrototype = {};
+
+BinarySearchTreePrototype.isBalanced = function() {
+  if (Math.abs(rootNode.depthLeft - rootNode.depthRight) > 2) {
+    
+  } 
+};
 
 BinarySearchTreePrototype.insert = function(value) {
   var rootNode = this;
@@ -16,6 +24,7 @@ BinarySearchTreePrototype.insert = function(value) {
 
   var recurse = function(newNode) {
     if (rootNode.value > newNode.value) {
+      rootNode.depthLeft++;
       if (Object.keys(rootNode.left).length === 0) {
         rootNode.left = newNode;
       } else {
@@ -23,6 +32,7 @@ BinarySearchTreePrototype.insert = function(value) {
         recurse(newNode);
       }
     } else {
+      rootNode.depthRight++;
       if (Object.keys(rootNode.right).length === 0) {
         rootNode.right = newNode;
       } else {
@@ -33,6 +43,7 @@ BinarySearchTreePrototype.insert = function(value) {
   };
 
   recurse(newNode);
+  
 };
 //time complexity: O(log n)
 
@@ -84,12 +95,6 @@ BinarySearchTreePrototype.depthFirstLog = function(func) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-
-
-
-
-
 
 
 
